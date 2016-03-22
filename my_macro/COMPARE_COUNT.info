@@ -1,0 +1,24 @@
+BEGIN_DEF "cmp_count"
+    MACRO = "COMPARE_COUNT";
+    STATEFUL = YES;
+    STATEFUL_ATTRIBUTES = "has_explicit_reset";
+    EXTERNAL = NO;
+    PIPELINED = YES;
+    LATENCY = 2;
+    INPUTS = 5:
+      I0 = INT 64 BITS (A[63:0])  // explicit input
+      I1 = INT 64 BITS (B[63:0])  //    "       "
+      I2 = INT  1 BITS (CLR)      //    "       "
+
+      I3 = INT  1 BITS (VALID)    // implicit input
+      I4 = INT  1 BITS (LOOP)     //    "       "
+      ;
+    OUTPUTS = 3:
+      O0 = INT 32 BITS (Q0[31:0]) // explicit output
+      O1 = INT 32 BITS (Q1[31:0]) //    "       "
+      O2 = INT 32 BITS (Q2[31:0]) //    "       "
+      ;
+    IN_SIGNAL : 1 BITS "CLK" = "CLOCK";
+
+END_DEF
+
